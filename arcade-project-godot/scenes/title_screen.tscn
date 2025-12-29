@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://g4td5lychi3m"]
+[gd_scene load_steps=3 format=3 uid="uid://g4td5lychi3m"]
 
 [ext_resource type="FontFile" uid="uid://cxsi02fqku2x1" path="res://fonts/PressStart2P-Regular.ttf" id="1_fgkus"]
+[ext_resource type="Script" uid="uid://j4rqkemobd4l" path="res://scripts/title_screen.gd" id="1_sa3yf"]
 
 [node name="title_screen" type="Node2D"]
+script = ExtResource("1_sa3yf")
 metadata/_edit_vertical_guides_ = [576.0, 0.0, 1152.0]
 metadata/_edit_horizontal_guides_ = [0.0, 648.0, 324.0]
 
@@ -15,6 +17,26 @@ theme_override_fonts/font = ExtResource("1_fgkus")
 theme_override_font_sizes/font_size = 32
 text = "Press Start"
 
+[node name="Label2" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 608.0
+offset_right = 360.0
+offset_bottom = 640.0
+theme_override_fonts/font = ExtResource("1_fgkus")
+theme_override_font_sizes/font_size = 16
+text = "Player 1 Credit: "
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 792.0
+offset_top = 608.0
+offset_right = 1144.0
+offset_bottom = 640.0
+theme_override_fonts/font = ExtResource("1_fgkus")
+theme_override_font_sizes/font_size = 16
+text = "Player 2 Credit: "
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
