@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://g4td5lychi3m"]
+
+[ext_resource type="FontFile" uid="uid://cxsi02fqku2x1" path="res://fonts/PressStart2P-Regular.ttf" id="1_fgkus"]
+
+[node name="title_screen" type="Node2D"]
+metadata/_edit_vertical_guides_ = [576.0, 0.0, 1152.0]
+metadata/_edit_horizontal_guides_ = [0.0, 648.0, 324.0]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 308.0
+offset_right = 752.0
+offset_bottom = 340.0
+theme_override_fonts/font = ExtResource("1_fgkus")
+theme_override_font_sizes/font_size = 32
+text = "Press Start"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
