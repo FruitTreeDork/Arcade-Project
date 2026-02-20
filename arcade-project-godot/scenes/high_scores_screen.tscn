@@ -1,0 +1,184 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbpcr122tvx6b"]
+
+[ext_resource type="Script" uid="uid://m083156vnrfi" path="res://scripts/high_scores_screen.gd" id="1_fk6ec"]
+[ext_resource type="FontFile" uid="uid://cxsi02fqku2x1" path="res://fonts/PressStart2P-Regular.ttf" id="1_gs7r4"]
+[ext_resource type="PackedScene" uid="uid://53inlstl8qme" path="res://scenes/prefabs/fade_anim_node.tscn" id="3_dysq1"]
+
+[sub_resource type="Animation" id="Animation_dysq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("high_scores:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 96)]
+}
+
+[sub_resource type="Animation" id="Animation_fk6ec"]
+resource_name = "high_score_scroll"
+length = 10.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("high_scores:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4, 6, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -240), Vector2(0, -240), Vector2(0, 96), Vector2(0, 96), Vector2(0, -240), Vector2(0, -240)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lclfp"]
+_data = {
+&"RESET": SubResource("Animation_dysq1"),
+&"high_score_scroll": SubResource("Animation_fk6ec")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk6ec"]
+bg_color = Color(0.03529412, 0.003921569, 0.050980393, 1)
+
+[node name="High scores screen" type="Node2D"]
+script = ExtResource("1_fk6ec")
+
+[node name="high_scores" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 96.0
+offset_right = 1152.0
+offset_bottom = 984.0
+
+[node name="1" type="Label" parent="high_scores"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 128.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("1_gs7r4")
+theme_override_font_sizes/font_size = 48
+text = "1:"
+
+[node name="2" type="Label" parent="high_scores"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 120.0
+offset_right = 128.0
+offset_bottom = 168.0
+theme_override_fonts/font = ExtResource("1_gs7r4")
+theme_override_font_sizes/font_size = 48
+text = "2:"
+
+[node name="3" type="Label" parent="high_scores"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 208.0
+offset_right = 128.0
+offset_bottom = 256.0
+theme_override_fonts/font = ExtResource("1_gs7r4")
+theme_override_font_sizes/font_size = 48
+text = "3:"
+
+[node name="4" type="Label" parent="high_scores"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 296.0
+offset_right = 128.0
+offset_bottom = 344.0
+theme_override_fonts/font = ExtResource("1_gs7r4")
+theme_override_font_sizes/font_size = 48
+text = "4:"
+
+[node name="5" type="Label" parent="high_scores"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 384.0
+offset_right = 128.0
+offset_bottom = 432.0
+theme_override_fonts/font = ExtResource("1_gs7r4")
+theme_override_font_sizes/font_size = 48
+text = "5:"
+
+[node name="6" type="Label" parent="high_scores"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 472.0
+offset_right = 128.0
+offset_bottom = 520.0
+theme_override_fonts/font = ExtResource("1_gs7r4")
+theme_override_font_sizes/font_size = 48
+text = "6:"
+
+[node name="7" type="Label" parent="high_scores"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 560.0
+offset_right = 128.0
+offset_bottom = 608.0
+theme_override_fonts/font = ExtResource("1_gs7r4")
+theme_override_font_sizes/font_size = 48
+text = "7:"
+
+[node name="8" type="Label" parent="high_scores"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 648.0
+offset_right = 128.0
+offset_bottom = 696.0
+theme_override_fonts/font = ExtResource("1_gs7r4")
+theme_override_font_sizes/font_size = 48
+text = "8:"
+
+[node name="9" type="Label" parent="high_scores"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 736.0
+offset_right = 128.0
+offset_bottom = 784.0
+theme_override_fonts/font = ExtResource("1_gs7r4")
+theme_override_font_sizes/font_size = 48
+text = "9:"
+
+[node name="10" type="Label" parent="high_scores"]
+layout_mode = 0
+offset_top = 824.0
+offset_right = 144.0
+offset_bottom = 872.0
+theme_override_fonts/font = ExtResource("1_gs7r4")
+theme_override_font_sizes/font_size = 48
+text = "10:"
+
+[node name="scores_move" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lclfp")
+}
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1152.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fk6ec")
+
+[node name="high_score_label" type="Label" parent="."]
+offset_left = 312.0
+offset_top = 16.0
+offset_right = 840.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("1_gs7r4")
+theme_override_font_sizes/font_size = 48
+text = "High Scores"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="fade_anim_node" parent="." instance=ExtResource("3_dysq1")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

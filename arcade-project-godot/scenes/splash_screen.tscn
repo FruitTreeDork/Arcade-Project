@@ -1,3 +1,126 @@
-[gd_scene format=3 uid="uid://duv47m1tm4e8o"]
+[gd_scene load_steps=9 format=3 uid="uid://duv47m1tm4e8o"]
+
+[ext_resource type="Script" uid="uid://isk5vxawbeto" path="res://scripts/splash_screen.gd" id="1_3mj2l"]
+[ext_resource type="Texture2D" uid="uid://uqichrr4pf6o" path="res://art/splash_screen/Sprite-NewFruitTreeScaryLogo.png" id="1_n4g2v"]
+[ext_resource type="FontFile" uid="uid://cxsi02fqku2x1" path="res://fonts/PressStart2P-Regular.ttf" id="2_hsxvm"]
+[ext_resource type="PackedScene" uid="uid://53inlstl8qme" path="res://scenes/prefabs/fade_anim_node.tscn" id="3_4gp4q"]
+
+[sub_resource type="Animation" id="Animation_4gp4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fruitTree_studios:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fruitTree_studios:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hsxvm"]
+resource_name = "splash_anim"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fruitTree_studios:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fruitTree_studios:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3mj2l"]
+_data = {
+&"RESET": SubResource("Animation_4gp4q"),
+&"splash_anim": SubResource("Animation_hsxvm")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nfk5"]
+bg_color = Color(0.03529412, 0.003921569, 0.050980393, 1)
 
 [node name="Splash Screen" type="Node2D"]
+script = ExtResource("1_3mj2l")
+metadata/_edit_vertical_guides_ = [576.0]
+metadata/_edit_horizontal_guides_ = [320.0]
+
+[node name="splash_anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3mj2l")
+}
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4nfk5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 320.00003)
+scale = Vector2(7, 7)
+texture = ExtResource("1_n4g2v")
+
+[node name="fruitTree_studios" type="Label" parent="."]
+offset_left = 336.0
+offset_top = 520.0
+offset_right = 816.0
+offset_bottom = 552.0
+theme_override_fonts/font = ExtResource("2_hsxvm")
+theme_override_font_sizes/font_size = 32
+text = "FruitTree Games"
+
+[node name="fade_anim_node" parent="." instance=ExtResource("3_4gp4q")]
